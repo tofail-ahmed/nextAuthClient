@@ -1,5 +1,7 @@
 import Sidebar from "@/components/shared/Sidebar";
+
 import type { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: "Next Auth Dashboard",
@@ -11,6 +13,8 @@ export default function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <div className="min-h-screen my-2">
       <div className="flex justify-between">
