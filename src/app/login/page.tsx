@@ -3,13 +3,16 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { loginUser } from "@/utils/actions/loginUser";
 
-type FormValues = {
+export type FormValues = {
   email: string;
   password: string;
 };
 
 const LoginPage = () => {
+  const router=useRouter()
   const {
     register,
     handleSubmit,
@@ -18,6 +21,20 @@ const LoginPage = () => {
 
   const onSubmit = async (data: FormValues) => {
     console.log(data);
+    try {
+      const res = await loginUser(data);
+      console.log(res);
+      if (res?.accessToken) {
+        alert("user logged in!");
+        localStorage.setItem("accessToken",res?.accessToken)
+        router.push("/dashboard");
+      }
+    } catch (err: any) {
+      console.error(err.message);
+      throw new Error(err.message);
+    }
+    
+
   };
 
   return (

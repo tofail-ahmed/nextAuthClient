@@ -5,6 +5,8 @@ import Image from "next/image";
 const DashboardPage = async () => {
   const session = await getServerSession(authOptions);
   // console.log(session);
+  const token=localStorage.getItem("accessToken");
+  console.log(token)
   return (
     <div>
       {session?.user?.email && (
