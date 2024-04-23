@@ -1,4 +1,5 @@
 "use client";
+import { removeLocalStorage } from "@/utils/localStorage";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 export type UserProps = {
@@ -9,6 +10,11 @@ export type UserProps = {
   };
 };
 const Navbar = ({ session }: { session: UserProps | null }) => {
+  const handleLogout=()=>{
+    signOut()
+    removeLocalStorage("accessToken")
+    // console.log("logOut")
+  }
   return (
     <div className="navbar bg-base-100  border-b  w-[90%] mx-auto">
       <div className="navbar-start">
@@ -68,7 +74,7 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
       </div>
       <div className="navbar-end">
         {session?.user ? (
-          <button onClick={()=>signOut()} className="btn btn-error btn-outline text-white rounded-full px-5">
+          <button onClick={handleLogout} className="btn btn-error btn-outline text-white rounded-full px-5">
             Logout
           </button>
         ) : (

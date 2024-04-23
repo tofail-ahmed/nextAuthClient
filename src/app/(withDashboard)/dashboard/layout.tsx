@@ -22,12 +22,18 @@ export default function DashboardLayout({
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [sessionToken, setSessionToken] = useState<UserProps | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSession = async () => {
-      const token = await SessionInfo();
-      setSessionToken(token);
-      setLoading(false);
+      try {
+        const token = await SessionInfo();
+        setSessionToken(token);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching session:", error);
+        setLoading(false);
+      }
     };
 
     fetchSession();
@@ -35,19 +41,28 @@ export default function DashboardLayout({
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
+    if (token) {
+      setAccessToken(token);
+    }
+    setLoading(false);
+  }, []);
 
+  useEffect(() => {
     if (!loading) {
-      if (!sessionToken && !token) {
-        router.push("/login");
-      } else {
+      if (sessionToken || accessToken) {
         router.push("/dashboard");
+      } else {
+        router.push("/login");
       }
     }
-  }, [loading, sessionToken, router]);
+  }, [loading, sessionToken, accessToken, router]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  console.log(sessionToken);
+  console.log(accessToken);
 
   return (
     <div className="min-h-screen my-2">
