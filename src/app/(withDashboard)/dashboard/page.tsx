@@ -53,7 +53,7 @@ const DashboardPage = () => {
             <span className="text-green-400">{sessionToken?.user?.email}</span>
           </h1>
           <Image
-            src={sessionToken?.user?.image}
+            src={sessionToken?.user?.image || "https://i.ebayimg.com/images/g/~TUAAOSwWMNbrgvA/s-l1200.webp"}
             alt="image"
             width={150}
             height={150}

@@ -1,4 +1,5 @@
 "use client"
+import DashboardDrawer from "@/components/Drawer/Drawer"
 import Sidebar from "@/components/shared/Sidebar";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
@@ -65,13 +66,14 @@ export default function DashboardLayout({
   // console.log(accessToken);
 
   return (
-    <div className="min-h-screen my-2">
-      <div className="flex justify-between">
-        <div className="w-[20%]">
-          <Sidebar />
-        </div>
-        <div className="w-[80%] bg-base-200 rounded-box ml-2">{children}</div>
-      </div>
-    </div>
+    // <div className="min-h-screen my-2">
+    //   <div className="flex justify-between">
+    //     <div className="w-[20%]">
+    //       <Sidebar />
+    //     </div>
+    //     <div className="w-[80%] bg-base-200 rounded-box ml-2">{children}</div>
+    //   </div>
+    // </div>
+    <DashboardDrawer>{children}</DashboardDrawer>
   );
 }
