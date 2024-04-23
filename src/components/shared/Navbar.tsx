@@ -1,7 +1,7 @@
 "use client";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-type UserProps = {
+export type UserProps = {
   user?: {
     name?: string | null | undefined;
     email?: string | null | undefined;

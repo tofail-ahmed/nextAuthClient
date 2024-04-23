@@ -1,26 +1,37 @@
+// "use client"
+import { UserProps } from "@/components/shared/Navbar";
+import { SessionInfo } from "@/utils/actions/session";
 import { authOptions } from "@/utils/authOptions";
+import { getLocalStorage } from "@/utils/localStorage";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const DashboardPage = async () => {
-  const session = await getServerSession(authOptions);
-  // console.log(session);
-  const token=localStorage.getItem("accessToken");
-  console.log(token)
+const DashboardPage =  async() => {
+  // const [sessionToken, setSessionToken] = useState<UserProps | null>(null);
+  // const [accessToken,setAccesstoken]=useState<string|null>(null)
+ const sessionToken = await getServerSession(authOptions);
+  
+
+//
+  console.log(sessionToken);
+  
+ 
   return (
     <div>
-      {session?.user?.email && (
+      {sessionToken?.user?.email && (
         <>
           <h1 className="text-4xl text-center mt-10">
             Welcome{" "}
-            <span className="text-green-400 italic">{session?.user?.name}</span>
+            <span className="text-green-400 italic">{sessionToken?.user?.name}</span>
           </h1>
           <h1 className="text-2xl text-center mt-10">
             Logged in with{" "}
-            <span className="text-green-400">{session?.user?.email}</span>
+            <span className="text-green-400">{sessionToken?.user?.email}</span>
           </h1>
           <Image
-            src={session?.user?.image} 
+            src={sessionToken?.user?.image} 
             alt="image"
             width={150}
             height={150}
