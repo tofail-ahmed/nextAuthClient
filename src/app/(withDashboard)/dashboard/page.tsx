@@ -2,6 +2,7 @@
 import { UserProps } from "@/components/shared/Navbar";
 import { SessionInfo } from "@/utils/actions/session";
 import { authOptions } from "@/utils/authOptions";
+import { decodedToken } from "@/utils/jwt/jwt";
 import { getLocalStorage } from "@/utils/localStorage";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
@@ -32,10 +33,10 @@ const DashboardPage = () => {
 
  const accessToken=localStorage.getItem("accessToken")
 
+ const accessData:any = decodedToken(accessToken) 
 
-
-  console.log(sessionToken);
-  console.log(accessToken);
+  // console.log(sessionToken);
+  // console.log(accessData);
 
   return (
     <div>
@@ -66,7 +67,7 @@ const DashboardPage = () => {
           
           <h1 className="text-2xl text-center mt-10">
             Logged in with{" "}
-            <span className="text-green-400">{accessToken}</span>
+            <span className="text-green-400">{accessData?.email}</span>
           </h1>
           
         </>

@@ -61,8 +61,8 @@ export default function DashboardLayout({
     return <div>Loading...</div>;
   }
 
-  console.log(sessionToken);
-  console.log(accessToken);
+  // console.log(sessionToken);
+  // console.log(accessToken);
 
   return (
     <div className="min-h-screen my-2">

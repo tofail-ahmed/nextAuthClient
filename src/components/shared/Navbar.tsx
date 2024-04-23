@@ -15,6 +15,8 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
     removeLocalStorage("accessToken")
     // console.log("logOut")
   }
+  const accessToken=localStorage.getItem("accessToken");
+  console.log(accessToken)
   return (
     <div className="navbar bg-base-100  border-b  w-[90%] mx-auto">
       <div className="navbar-start">
@@ -73,7 +75,7 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
         </ul>
       </div>
       <div className="navbar-end">
-        {session?.user ? (
+        {session?.user || accessToken ? (
           <button onClick={handleLogout} className="btn btn-error btn-outline text-white rounded-full px-5">
             Logout
           </button>
