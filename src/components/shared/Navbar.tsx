@@ -69,14 +69,19 @@ const Navbar = ({ session }: { session: UserProps | null }) => {
           <li>
             <Link href="/support">Support</Link>
           </li>
-          <li>
-            <Link href="/dashboard">Dashboard</Link>
-          </li>
+          {accessToken && (
+            <li>
+              <Link href="/dashboard">Dashboard</Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
         {session?.user || accessToken ? (
-          <button onClick={handleLogout} className="btn btn-error btn-outline text-white rounded-full px-5">
+          <button
+            onClick={handleLogout}
+            className="btn btn-error btn-outline text-white rounded-full px-5"
+          >
             Logout
           </button>
         ) : (
