@@ -42,7 +42,7 @@ const DashboardPage = () => {
     <div>
       {sessionToken?.user?.email && (
         <>
-          <h1 className="text-4xl text-center mt-10">
+          <h1 className="text-4xl text-center pt-10">
             Welcome{" "}
             <span className="text-green-400 italic">
               {sessionToken?.user?.name}
@@ -65,7 +65,7 @@ const DashboardPage = () => {
         accessToken &&(
           <>
           
-          <h1 className="text-2xl text-center mt-10">
+          <h1 className="text-2xl text-center pt-10">
             Logged in with{" "}
             <span className="text-green-400">{accessData?.email}</span>
           </h1>

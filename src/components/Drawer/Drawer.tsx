@@ -20,7 +20,7 @@ import Link from "next/link";
 import Sidebar from './Sidebar';
 
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 
 export default function DashboardDrawer({children}:{children:React.ReactNode}) {
@@ -48,12 +48,15 @@ export default function DashboardDrawer({children}:{children:React.ReactNode}) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+      
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          background: "#F4F6F7",
+          boxShadow: 0,
+          borderBottom: "1px solid lightgray",
         }}
       >
         <Toolbar>
@@ -62,12 +65,12 @@ export default function DashboardDrawer({children}:{children:React.ReactNode}) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: 'none' } ,color:"blue"}}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+          <Typography variant="h6" noWrap component="div" color="blue">
+            Hello Mr. X
           </Typography>
         </Toolbar>
       </AppBar>
@@ -106,10 +109,12 @@ export default function DashboardDrawer({children}:{children:React.ReactNode}) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1 }}
       >
-        <Toolbar />
-      {children}
+        {/* <Toolbar /> */}
+     <Box className="bg-red-100 min-h-screen">
+     {children}
+     </Box >
        
       </Box>
     </Box>

@@ -1,7 +1,7 @@
 import React from "react";
 
 const SpecialtiesPage = () => {
-  return <div>SpecialtiesPage</div>;
+  return <div className=" ">SpecialtiesPage</div>;
 };
 
 export default SpecialtiesPage;
