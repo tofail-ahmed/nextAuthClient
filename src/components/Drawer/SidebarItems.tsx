@@ -18,7 +18,7 @@ type TSidebar={
 }
 const SidebarItems = ({item,index}:TSidebar) => {
       const linkPath=`/dashboard${item.path}`;
-      const pathName=usePathname()
+      const pathName=usePathname();
       return (
             <Link href={linkPath}>
                   

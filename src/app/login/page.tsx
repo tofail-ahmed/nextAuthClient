@@ -20,22 +20,23 @@ const LoginPage = () => {
   } = useForm<FormValues>();
 
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
+    // console.log(data);
     try {
       const res = await loginUser(data);
-      console.log(res);
+      // console.log(res);
       if (res?.accessToken) {
         alert("user logged in!");
-        localStorage.setItem("accessToken",res?.accessToken)
+        localStorage.setItem("accessToken", res?.accessToken);
         router.push("/dashboard");
+        
       }
     } catch (err: any) {
       console.error(err.message);
       throw new Error(err.message);
     }
-    
-
   };
+  
+
 
   return (
     <div className="my-10">
